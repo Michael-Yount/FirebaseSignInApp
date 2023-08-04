@@ -15,6 +15,16 @@
  */
 'use strict';
 
+const app = initializeApp();
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 /**
  * Returns the ID of the Firebase project.
  */

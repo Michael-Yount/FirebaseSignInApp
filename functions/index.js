@@ -23,6 +23,7 @@ import { https, logger } from 'firebase-functions/v1';
 const cors = require('cors')({origin: true});
 
 // Firebase Setup
+import { initializeApp } from 'firebase-admin/app';
 import { initializeApp, credential as _credential, auth } from 'firebase-admin';
 // @ts-ignore
 import serviceAccount from './service-account.json';
@@ -34,17 +35,9 @@ initializeApp({
 import fetch from 'node-fetch';
 import { FIREBASE_CONFIG_VAR } from 'firebase-admin/lib/app/lifecycle';
 
-// 
-const app = initializeApp();
+/* 
 
-var admin = require("firebase-admin");
-
-var serviceAccount = require("path/to/serviceAccountKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
-
+*/
 export const auth = https.onRequest((req, res) => {
   const handleError = (username, error) => {
     logger.error({ User: username }, error);
