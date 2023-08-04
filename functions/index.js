@@ -15,6 +15,8 @@
  */
 'use strict';
 
+
+
 import { https, logger } from 'firebase-functions/v1';
 
 // CORS Express middleware to enable CORS Requests.
@@ -30,7 +32,18 @@ initializeApp({
 });
 
 import fetch from 'node-fetch';
+import { FIREBASE_CONFIG_VAR } from 'firebase-admin/lib/app/lifecycle';
 
+// 
+const app = initializeApp();
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 export const auth = https.onRequest((req, res) => {
   const handleError = (username, error) => {
